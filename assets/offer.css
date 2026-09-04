@@ -81,7 +81,7 @@
     break-inside: avoid; font-size: 9.3pt; font-weight: 500; line-height: 1.4;
     padding: 2.4mm 0; border-top: 1px solid var(--rule);
   }
-  .sec ul.inc li::before { content: '–'; color: var(--accent); font-weight: 700; margin-right: 6px; }
+  .sec ul.inc li::before { content: '-'; color: var(--accent); font-weight: 700; margin-right: 6px; }
 
   .facts dt { font-size: 7.5pt; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--grey); }
   .facts dd { margin-top: 1mm; }
