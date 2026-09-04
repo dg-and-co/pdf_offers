@@ -15,6 +15,8 @@ Open the offer's `index.html` in a browser to preview (each `.page` section is o
 
 Each offer is three A4 pages: cover, the offer itself, and a summary with next steps and contact details.
 
+**Validity rule:** "Tilboðið gildir til" is always today's date plus 4 days. Set it in two places: the cover meta strip (Gildir til) and the Skilmálar box on the last page.
+
 ### Logos
 
 The offer looks for `logo.png` next to its `index.html`. If the file exists it is used everywhere the logo appears; if not, an inline SVG recreation of the logo is rendered instead. To use the official logo, save it as `offers/<client>/logo.png` (square, transparent background works best) and rebuild.
