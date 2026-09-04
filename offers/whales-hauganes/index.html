@@ -16,47 +16,17 @@
     --rule-strong: #111111;
     --white: #FFFFFF;
   }
+  .brand { font-size: 11pt; font-weight: 700; letter-spacing: -0.01em; }
+  .brand.small { font-size: 9.5pt; }
+  .cover .top { align-items: baseline; }
 </style>
 </head>
 <body>
 
-<!-- Inline recreation of the Whale Watching Hauganes logo. Replaced automatically by logo.png when that file exists next to this HTML. -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="wwh-logo" viewBox="0 0 500 500">
-      <!-- carbon neutral tours leaf -->
-      <path d="M318 100 C310 44 362 8 494 14 C500 84 452 126 384 120 C358 118 336 112 318 100 Z" fill="#6DAD4E"/>
-      <text x="408" y="48" font-family="Inter" font-weight="800" font-size="19.5" fill="#FFFFFF" text-anchor="middle">CARBON</text>
-      <text x="408" y="70" font-family="Inter" font-weight="800" font-size="19.5" fill="#FFFFFF" text-anchor="middle">NEUTRAL</text>
-      <text x="408" y="92" font-family="Inter" font-weight="800" font-size="19.5" fill="#FFFFFF" text-anchor="middle">TOURS</text>
-      <!-- orca body: snout at left, falcate dorsal fin, flukes at right -->
-      <path d="M6 150 C20 132 60 116 110 106 C130 102 150 100 160 100 C200 94 250 88 272 90 C285 80 305 66 326 64 C330 64 332 68 330 72 C322 84 322 98 332 104 C360 108 392 120 416 138 C430 128 452 118 484 120 C490 120 490 124 486 128 C466 140 452 152 446 166 C454 178 462 196 466 212 C467 218 462 220 458 216 C448 200 436 182 420 168 C390 180 350 192 300 200 C280 203 250 206 200 208 C192 216 178 232 158 240 C150 244 144 240 146 234 C150 224 152 216 150 208 C110 204 70 196 44 182 C26 172 12 162 6 150 Z" fill="#111111"/>
-      <!-- white throat and belly -->
-      <path d="M8 152 C40 164 80 174 130 178 C180 182 230 182 270 176 C280 174 284 180 274 184 C230 196 180 204 130 204 C90 202 50 194 22 178 C14 172 8 162 8 152 Z" fill="#FFFFFF"/>
-      <!-- eye patch and eye -->
-      <path d="M48 134 C70 120 105 112 148 114 C156 114 158 120 150 124 C120 134 90 140 62 140 C52 140 46 138 48 134 Z" fill="#FFFFFF"/>
-      <circle cx="78" cy="148" r="4" fill="#111111"/>
-      <!-- saddle patch and highlights -->
-      <path d="M300 118 C322 104 350 100 378 106 C366 116 344 124 320 126 C308 126 300 124 300 118 Z" fill="#A9ABAB"/>
-      <path d="M110 108 C160 96 220 92 268 94" stroke="#A9ABAB" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <path d="M350 112 C380 120 404 132 420 144" stroke="#A9ABAB" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <path d="M452 186 C456 196 460 206 462 214" stroke="#A9ABAB" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <!-- wordmark (heavy condensed) -->
-      <text x="250" y="302" font-family="Inter" font-weight="900" font-size="118" fill="#111111" stroke="#111111" stroke-width="2.5" paint-order="stroke" text-anchor="middle" letter-spacing="-1" textLength="396" lengthAdjust="spacingAndGlyphs">WHALE</text>
-      <text x="250" y="358" font-family="Inter" font-weight="900" font-size="58" fill="#111111" stroke="#111111" stroke-width="1.2" paint-order="stroke" text-anchor="middle" textLength="404" lengthAdjust="spacingAndGlyphs">WATCHING</text>
-      <rect x="48" y="373" width="404" height="62" rx="16" fill="#111111"/>
-      <text x="250" y="417" font-family="Inter" font-weight="800" font-size="36" fill="#FFFFFF" text-anchor="middle" letter-spacing="10" textLength="360" lengthAdjust="spacing">HAUGANES</text>
-      <text x="250" y="478" font-family="Inter" font-weight="700" font-size="27" fill="#111111" text-anchor="middle" letter-spacing="1">— SINCE 1993 —</text>
-    </symbol>
-  </defs>
-</svg>
-
 <!-- =============================== PAGE 1 · COVER =============================== -->
 <section class="page cover">
   <div class="top">
-    <object class="logo" data="logo.png" type="image/png" style="width:42mm;height:42mm" aria-label="Whale Watching Hauganes">
-      <svg viewBox="0 0 500 500"><use href="#wwh-logo"/></svg>
-    </object>
+    <div class="brand">Whale Watching Hauganes</div>
     <div class="r"><b>Tilboð</b>4. september 2026</div>
   </div>
 
@@ -78,9 +48,7 @@
 <!-- =============================== PAGE 2 · TILBOÐIÐ =============================== -->
 <section class="page">
   <div class="head">
-    <object class="logo" data="logo.png" type="image/png" style="width:16mm;height:16mm" aria-label="Whale Watching Hauganes">
-      <svg viewBox="0 0 500 500"><use href="#wwh-logo"/></svg>
-    </object>
+    <div class="brand small">Whale Watching Hauganes</div>
     <div class="r"><b>Tilboðið</b> · Nýr vefur og Google auglýsingar</div>
   </div>
 
@@ -140,9 +108,7 @@
 <!-- =============================== PAGE 3 · SAMANTEKT =============================== -->
 <section class="page">
   <div class="head">
-    <object class="logo" data="logo.png" type="image/png" style="width:16mm;height:16mm" aria-label="Whale Watching Hauganes">
-      <svg viewBox="0 0 500 500"><use href="#wwh-logo"/></svg>
-    </object>
+    <div class="brand small">Whale Watching Hauganes</div>
     <div class="r"><b>Samantekt</b> · Verð og næstu skref</div>
   </div>
 
