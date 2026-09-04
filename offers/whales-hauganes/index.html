@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+<meta charset="utf-8">
+<title>Tilboð – Whales Hauganes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/fonts/inter/inter.css">
+<style>
+  /* =========================================================
+     BRAND TOKENS — edit these to retune the whole document
+     ========================================================= */
+  :root {
+    --navy:      #0A2540;   /* deep ocean, primary */
+    --navy-2:    #10365C;
+    --deep:      #061A2E;
+    --blue:      #1E6FB5;   /* ocean blue, links / accents */
+    --sky:       #5FB0E6;
+    --ice:       #EAF3FA;   /* pale tint for panels */
+    --ice-2:     #F5F9FC;
+    --accent:    #F5A524;   /* warm highlight: prices, "deal" */
+    --accent-dk: #C77E08;
+    --text:      #14202E;
+    --muted:     #5E6E80;
+    --line:      #DCE6EF;
+    --white:     #FFFFFF;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text);
+    background: #E9EDF2;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: 'ss01', 'cv11', 'tnum';
+  }
+
+  @page { size: A4; margin: 0; }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+    padding: 16mm 17mm 14mm;
+    break-after: page;
+    page-break-after: always;
+  }
+  .page:last-child { break-after: auto; page-break-after: auto; }
+
+  @media screen {
+    body { padding: 24px 0; }
+    .page { margin: 0 auto 24px; box-shadow: 0 10px 40px rgba(6, 26, 46, .18); }
+  }
+  @media print {
+    body { background: none; }
+  }
+
+  h1, h2, h3, h4, p { margin: 0; }
+  h1 { font-size: 30pt; font-weight: 800; line-height: 1.12; letter-spacing: -0.02em; }
+  h2 { font-size: 22pt; font-weight: 800; line-height: 1.18; letter-spacing: -0.02em; color: var(--navy); }
+  h3 { font-size: 12.5pt; font-weight: 700; line-height: 1.3; color: var(--navy); }
+  .lead { font-size: 11.5pt; color: var(--muted); line-height: 1.6; max-width: 150mm; }
+  .eyebrow {
+    font-size: 8.5pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--blue);
+  }
+  .num-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 8.5pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue);
+  }
+  .num-eyebrow::before { content: ''; width: 22px; height: 2px; background: var(--accent); border-radius: 2px; }
+
+  /* ---------- Logo lockup (placeholder — swap for the real logo) ---------- */
+  .logo { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: inherit; }
+  .logo .fluke { width: 30px; height: 30px; flex: none; }
+  .logo .wordmark { display: flex; flex-direction: column; line-height: 1; }
+  .logo .wordmark b { font-size: 14pt; font-weight: 900; letter-spacing: 0.06em; }
+  .logo .wordmark span { font-size: 7pt; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; margin-top: 3px; opacity: .8; }
+  .logo.light { color: var(--white); }
+  .logo.light .fluke { fill: var(--white); }
+  .logo.dark { color: var(--navy); }
+  .logo.dark .fluke { fill: var(--navy); }
+  .logo.dark .wordmark span { color: var(--blue); opacity: 1; }
+
+  /* ---------- Page header / footer ---------- */
+  .pagehead {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 5mm; margin-bottom: 7mm; border-bottom: 1px solid var(--line);
+  }
+  .pagehead .crumb { font-size: 8.5pt; color: var(--muted); font-weight: 500; letter-spacing: 0.02em; }
+  .pagehead .crumb b { color: var(--navy); font-weight: 700; }
+  .pagefoot {
+    position: absolute; left: 17mm; right: 17mm; bottom: 9mm;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 8pt; color: var(--muted); border-top: 1px solid var(--line); padding-top: 3.5mm;
+  }
+  .pagefoot .pg { font-weight: 700; color: var(--navy); }
+
+  /* =========================================================
+     COVER
+     ========================================================= */
+  .cover {
+    background: radial-gradient(120% 90% at 100% 0%, #16487A 0%, var(--navy) 45%, var(--deep) 100%);
+    color: var(--white);
+    padding: 16mm 17mm 14mm;
+    display: flex; flex-direction: column;
+  }
+  .cover .bg-fluke {
+    position: absolute; right: -32mm; top: 44mm; width: 150mm; height: 150mm;
+    fill: var(--white); opacity: .05; transform: rotate(-12deg);
+  }
+  .cover .waves { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 62mm; }
+  .cover .top { display: flex; justify-content: space-between; align-items: center; }
+  .cover .top .badge {
+    font-size: 8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: 5px 12px; color: rgba(255,255,255,.9);
+  }
+  .cover .hero { margin-top: 34mm; position: relative; z-index: 1; }
+  .cover .hero .eyebrow { color: var(--accent); }
+  .cover h1 { margin-top: 5mm; max-width: 155mm; font-size: 33pt; }
+  .cover h1 em { font-style: normal; color: var(--sky); }
+  .cover .sub { margin-top: 6mm; max-width: 140mm; font-size: 12pt; line-height: 1.6; color: rgba(255,255,255,.82); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10mm; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18);
+    border-radius: 999px; padding: 7px 13px 7px 10px; font-size: 9pt; font-weight: 600; color: var(--white);
+    backdrop-filter: blur(4px);
+  }
+  .chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .chip.alt .dot { background: var(--sky); }
+  .cover .stats {
+    margin-top: auto; margin-bottom: 12mm; position: relative; z-index: 1;
+    display: flex; gap: 16mm;
+  }
+  .cover .stats b { display: block; font-size: 30pt; font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--white); }
+  .cover .stats b.acc { color: var(--accent); }
+  .cover .stats span { display: block; margin-top: 5px; font-size: 9pt; font-weight: 500; color: rgba(255,255,255,.65); }
+  .cover .meta {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 8mm;
+    padding-top: 6mm; border-top: 1px solid rgba(255,255,255,.18);
+  }
+  .cover .meta .k { font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.55); font-weight: 600; }
+  .cover .meta .v { margin-top: 4px; font-size: 10pt; font-weight: 600; color: var(--white); }
+  .cover .meta .v small { display: block; font-weight: 400; color: rgba(255,255,255,.65); font-size: 8.5pt; }
+
+  /* =========================================================
+     COMPONENTS
+     ========================================================= */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; }
+
+  .card {
+    border: 1px solid var(--line); border-radius: 14px; padding: 8mm 8mm 7mm; background: var(--white);
+    position: relative; overflow: hidden;
+  }
+  .card.tint { background: var(--ice-2); border-color: #D6E4F0; }
+  .card .num { font-size: 8.5pt; font-weight: 700; letter-spacing: .14em; color: var(--blue); text-transform: uppercase; }
+  .card h3 { margin-top: 2mm; font-size: 15pt; }
+  .card p { margin-top: 3mm; color: var(--muted); font-size: 9.8pt; }
+  .card .price { margin-top: 6mm; display: flex; align-items: baseline; gap: 7px; flex-wrap: wrap; }
+  .card .price .big { font-size: 20pt; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; line-height: 1; }
+  .card .price .unit { font-size: 9.5pt; color: var(--muted); font-weight: 500; }
+  .card .price .was { font-size: 9.5pt; color: var(--muted); text-decoration: line-through; text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
+  .card ul.mini { list-style: none; padding: 0; margin: 5mm 0 0; display: grid; gap: 6px; }
+  .card ul.mini li { display: flex; gap: 8px; align-items: flex-start; font-size: 9.5pt; color: var(--text); font-weight: 500; }
+  .card ul.mini li svg { width: 15px; height: 15px; flex: none; margin-top: 2px; }
+  .card .tag {
+    position: absolute; top: 0; right: 0; background: var(--accent); color: var(--deep);
+    font-size: 8pt; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+    padding: 6px 12px; border-bottom-left-radius: 12px;
+  }
+
+  .feature { display: flex; gap: 10px; align-items: flex-start; }
+  .feature .ico {
+    width: 34px; height: 34px; flex: none; border-radius: 10px; background: var(--ice);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .feature .ico svg { width: 18px; height: 18px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .feature h4 { font-size: 10.5pt; font-weight: 700; color: var(--navy); line-height: 1.3; }
+  .feature p { margin-top: 3px; font-size: 9.3pt; color: var(--muted); line-height: 1.5; }
+
+  .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 3mm; }
+  .list li { display: flex; gap: 10px; align-items: flex-start; }
+  .list li .chk {
+    width: 20px; height: 20px; flex: none; border-radius: 50%; background: var(--navy);
+    display: flex; align-items: center; justify-content: center; margin-top: 1px;
+  }
+  .list li .chk svg { width: 11px; height: 11px; stroke: var(--white); fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .list li b { display: block; font-size: 10.3pt; font-weight: 700; color: var(--navy); line-height: 1.3; }
+  .list li span { display: block; font-size: 9.2pt; color: var(--muted); margin-top: 2px; line-height: 1.45; }
+
+  /* price panel */
+  .pricebox {
+    background: var(--navy); color: var(--white); border-radius: 16px; padding: 8mm 8mm 7mm; position: relative; overflow: hidden;
+  }
+  .pricebox .bgf { position: absolute; right: -14mm; bottom: -14mm; width: 60mm; height: 60mm; fill: var(--white); opacity: .06; }
+  .pricebox .lbl { font-size: 8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+  .pricebox .was { margin-top: 2mm; font-size: 13pt; color: rgba(255,255,255,.55); text-decoration: line-through; text-decoration-color: var(--accent); text-decoration-thickness: 2px; font-weight: 500; }
+  .pricebox .now { margin-top: 1.5mm; display: flex; align-items: baseline; gap: 7px; white-space: nowrap; }
+  .pricebox .now .big { font-size: 26pt; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .pricebox .now .unit { font-size: 10pt; color: rgba(255,255,255,.75); font-weight: 500; }
+  .pricebox .save {
+    margin-top: 5mm; display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: var(--deep); border-radius: 999px; padding: 6px 12px 6px 8px;
+    font-size: 9pt; font-weight: 800; white-space: nowrap;
+  }
+  .pricebox .save .pct { background: var(--deep); color: var(--accent); border-radius: 999px; padding: 2px 8px; font-size: 8.5pt; }
+  .pricebox .note { margin-top: 4mm; font-size: 8.8pt; color: rgba(255,255,255,.7); line-height: 1.5; }
+  .pricebox .row { position: relative; padding: 3.5mm 0; border-top: 1px solid rgba(255,255,255,.14); }
+  .pricebox .row:first-of-type { border-top: 0; padding-top: 0; }
+  .pricebox .row .t b { display: block; font-size: 8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+  .pricebox .row .t span { display: block; font-size: 8.6pt; color: rgba(255,255,255,.65); margin-top: 2mm; line-height: 1.45; }
+  .pricebox .row .p { margin-top: 2.5mm; }
+  .pricebox .row .p b { display: block; font-size: 24pt; font-weight: 800; letter-spacing: -0.02em; line-height: 1; white-space: nowrap; }
+  .pricebox .row .p span { display: block; margin-top: 4px; font-size: 9.5pt; color: rgba(255,255,255,.75); font-weight: 500; }
+
+  /* timeline */
+  .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; position: relative; margin-top: 5mm; }
+  .timeline::before { content: ''; position: absolute; left: 6px; right: 6px; top: 7px; height: 2px; background: var(--line); }
+  .tl { position: relative; padding-top: 6mm; }
+  .tl::before { content: ''; position: absolute; left: 0; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--white); border: 4px solid var(--blue); }
+  .tl.last::before { border-color: var(--accent); background: var(--accent); }
+  .tl .d { font-size: 8pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); }
+  .tl.last .d { color: var(--accent-dk); }
+  .tl b { display: block; font-size: 10pt; color: var(--navy); margin-top: 3px; }
+  .tl span { display: block; font-size: 8.8pt; color: var(--muted); margin-top: 2px; line-height: 1.45; }
+
+  .strip {
+    display: flex; align-items: center; gap: 6mm; margin-top: 6mm;
+    background: var(--ice); border-radius: 14px; padding: 4.5mm 7mm;
+  }
+  .strip .val { flex: none; }
+  .strip .val b { display: block; font-size: 19pt; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; line-height: 1; }
+  .strip .val span { display: block; font-size: 8.5pt; color: var(--muted); margin-top: 3px; font-weight: 600; }
+  .strip .txt { border-left: 2px solid var(--sky); padding-left: 6mm; }
+  .strip .txt b { display: block; font-size: 10.5pt; color: var(--navy); }
+  .strip .txt span { display: block; font-size: 9.2pt; color: var(--muted); margin-top: 2px; }
+
+  /* audiences */
+  .aud { border: 1px solid var(--line); border-radius: 12px; padding: 4.5mm 6mm; position: relative; }
+  .aud.focus { border-color: var(--accent); background: #FFF9EE; }
+  .aud .ftag { position: absolute; top: -8px; right: 12px; background: var(--accent); color: var(--deep); font-size: 7.3pt; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; }
+  .aud b { display: block; font-size: 10.5pt; color: var(--navy); }
+  .aud span { display: block; font-size: 9pt; color: var(--muted); margin-top: 3px; line-height: 1.45; }
+
+  /* summary table */
+  table.sum { width: 100%; border-collapse: collapse; margin-top: 5mm; }
+  table.sum th { text-align: left; font-size: 8pt; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 0 3mm; border-bottom: 2px solid var(--navy); }
+  table.sum th:last-child, table.sum td:last-child { text-align: right; }
+  table.sum td { padding: 3.2mm 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.sum td .t { font-weight: 700; color: var(--navy); font-size: 10.5pt; }
+  table.sum td .s { font-size: 8.8pt; color: var(--muted); margin-top: 2px; }
+  table.sum td .when { font-size: 9.5pt; color: var(--text); font-weight: 500; }
+  table.sum td .p { font-size: 13pt; font-weight: 800; color: var(--navy); white-space: nowrap; letter-spacing: -0.01em; }
+  table.sum td .p small { font-size: 8.8pt; font-weight: 500; color: var(--muted); margin-left: 3px; }
+  table.sum td .was { font-size: 8.8pt; color: var(--muted); text-decoration: line-through; text-decoration-color: var(--accent); text-decoration-thickness: 2px; display: block; }
+  table.sum tr.hl td { background: #FFF9EE; }
+  table.sum tr.hl td:first-child { padding-left: 4mm; border-left: 3px solid var(--accent); }
+  table.sum tr.hl td:last-child { padding-right: 4mm; }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5mm; margin-top: 4mm; }
+  .step { background: var(--ice-2); border: 1px solid #D6E4F0; border-radius: 12px; padding: 4mm 5mm; }
+  .step .n { width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: var(--white); font-weight: 800; font-size: 10pt; display: flex; align-items: center; justify-content: center; }
+  .step b { display: block; margin-top: 3.5mm; font-size: 10.3pt; color: var(--navy); }
+  .step span { display: block; font-size: 8.8pt; color: var(--muted); margin-top: 2px; line-height: 1.45; }
+
+  .terms { margin-top: 5mm; display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+  .terms .box { border: 1px solid var(--line); border-radius: 12px; padding: 3.5mm 5.5mm; }
+  .terms .box .h { font-size: 8pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); }
+  .terms .box p { margin-top: 2.5mm; font-size: 9.2pt; color: var(--text); line-height: 1.55; }
+  .terms .box p + p { margin-top: 1.5mm; }
+
+  .closing {
+    margin-top: 5mm; background: var(--navy); color: var(--white); border-radius: 16px; padding: 5mm 8mm;
+    display: flex; justify-content: space-between; align-items: center; gap: 8mm; position: relative; overflow: hidden;
+  }
+  .closing .bgf { position: absolute; right: 30mm; bottom: -22mm; width: 62mm; height: 62mm; fill: var(--white); opacity: .06; transform: rotate(-10deg); }
+  .closing h3 { color: var(--white); font-size: 15pt; }
+  .closing p { margin-top: 2mm; color: rgba(255,255,255,.75); font-size: 9.5pt; max-width: 95mm; }
+  .closing .contact { position: relative; text-align: right; font-size: 9.3pt; line-height: 1.6; color: rgba(255,255,255,.9); }
+  .closing .contact b { display: block; font-size: 10.5pt; color: var(--white); }
+
+  .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 10mm; }
+  .section-head .lead { margin-top: 3mm; }
+  .mt-6 { margin-top: 6mm; } .mt-8 { margin-top: 8mm; } .mt-10 { margin-top: 10mm; } .mt-12 { margin-top: 12mm; }
+</style>
+</head>
+<body>
+
+<!-- Reusable whale-fluke mark (placeholder logo). Replace the <use> targets with the real whales.is logo when available. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="fluke" viewBox="0 0 64 52">
+      <path d="M32 1c1 11.2 4.2 21.2 10.4 28.6C48.6 37 56.4 41 63.5 43c-5 3.3-11.3 5.3-17.8 5.3-5.6 0-10-1.7-12.6-4.4L32 42.7l-1.1 1.2C28.3 46.6 23.9 48.3 18.3 48.3 11.8 48.3 5.5 46.3.5 43c7.1-2 14.9-6 21.1-13.4C27.8 22.2 31 12.2 32 1z"/>
+    </symbol>
+    <symbol id="check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  </defs>
+</svg>
+
+<!-- =========================================================
+     PAGE 1 · COVER
+     ========================================================= -->
+<section class="page cover">
+  <svg class="bg-fluke" aria-hidden="true"><use href="#fluke"/></svg>
+
+  <div class="top">
+    <!-- LOGO SLOT: replace this lockup with <img src="logo.svg"> when the real logo is available -->
+    <a class="logo light" href="https://whales.is/">
+      <svg class="fluke" aria-hidden="true"><use href="#fluke"/></svg>
+      <span class="wordmark"><b>WHALES</b><span>Hauganes</span></span>
+    </a>
+    <span class="badge">Tilboð · September 2026</span>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">Nýr vefur + Google auglýsingapakki</div>
+    <h1>Fleiri gestir finna <em>Whales Hauganes</em> – og bóka.</h1>
+    <p class="sub">Skalanlegri vefur með betra flæði og sterkari sýnileika í leitarvélum og gervigreindarleit – ásamt markvissum Google auglýsingum með áherslu á erlenda gesti og Asíumarkað.</p>
+
+    <div class="chips">
+      <span class="chip"><span class="dot"></span>Nýr vefur tilbúinn á 11 dögum</span>
+      <span class="chip"><span class="dot"></span>300.000 kr. í stað 600.000 kr.</span>
+      <span class="chip alt"><span class="dot"></span>Google Ads · innlendir og erlendir gestir</span>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div><b>11</b><span>dagar að nýjum vef</span></div>
+    <div><b class="acc">−50%</b><span>af verði nýs vefs</span></div>
+    <div><b>2</b><span>mánaða Google herferð</span></div>
+  </div>
+
+  <div class="meta">
+    <div><div class="k">Útbúið fyrir</div><div class="v">Whales Hauganes<small>whales.is</small></div></div>
+    <div><div class="k">Dagsetning</div><div class="v">4. september 2026</div></div>
+    <div><div class="k">Gildir til</div><div class="v">18. september 2026</div></div>
+    <div><div class="k">Frá</div><div class="v">[Nafn fyrirtækis]<small>[netfang · sími]</small></div></div>
+  </div>
+
+  <svg class="waves" viewBox="0 0 800 240" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 150 C 120 110, 220 190, 340 150 S 560 110, 680 150 S 780 170, 800 160 L800 240 L0 240 Z" fill="#FFFFFF" opacity=".04"/>
+    <path d="M0 185 C 140 150, 240 220, 380 185 S 600 150, 720 185 S 790 200, 800 195 L800 240 L0 240 Z" fill="#FFFFFF" opacity=".05"/>
+    <path d="M0 215 C 150 190, 260 240, 400 215 S 620 190, 800 220 L800 240 L0 240 Z" fill="#5FB0E6" opacity=".18"/>
+  </svg>
+</section>
+
+<!-- =========================================================
+     PAGE 2 · Í HNOTSKURN
+     ========================================================= -->
+<section class="page">
+  <div class="pagehead">
+    <a class="logo dark" href="https://whales.is/"><svg class="fluke"><use href="#fluke"/></svg><span class="wordmark"><b>WHALES</b><span>Hauganes</span></span></a>
+    <div class="crumb"><b>Tilboð</b> · Í hnotskurn</div>
+  </div>
+
+  <div class="num-eyebrow">Yfirlit</div>
+  <h2 class="mt-6" style="margin-top:3mm">Tvennt sem vinnur saman</h2>
+  <p class="lead">Markmiðið er einfalt: að fleiri gestir – innlendir sem erlendir – finni Whales Hauganes þegar þeir leita að hvalaskoðun, og að vefurinn breyti þeirri umferð í bókanir.</p>
+
+  <div class="grid-2 mt-10">
+    <div class="card tint">
+      <span class="tag">50% afsláttur</span>
+      <div class="num">01 · Nýr vefur</div>
+      <h3>Vefur sem vex með ykkur</h3>
+      <p>Nútímalegt útlit, skalanleg uppbygging og vefur sem er byggður frá grunni fyrir leitarvélar og gervigreindarleit.</p>
+      <div class="price"><span class="big">300.000 kr.</span><span class="unit">+ vsk.</span><span class="was">600.000 kr.</span></div>
+      <ul class="mini">
+        <li><svg><use href="#check" stroke="#1E6FB5" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Tilbúinn og kominn í loftið á 11 dögum</li>
+        <li><svg><use href="#check" stroke="#1E6FB5" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Eftir útgáfu: 5.000 kr. + vsk. á mánuði fyrir hýsingu og ótakmarkað viðhald</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="num">02 · Google auglýsingapakki</div>
+      <h3>Sýnileg þegar leitað er</h3>
+      <p>Markviss herferð á helstu leitarorðum um hvalaskoðun – fyrir innlenda og erlenda gesti, með sérstakri áherslu á Asíumarkað.</p>
+      <div class="price"><span class="big">140.000 kr.</span><span class="unit">+ vsk. á mánuði</span></div>
+      <ul class="mini">
+        <li><svg><use href="#check" stroke="#1E6FB5" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>2 mánaða tilboð · heildarviðhald og skýrslur innifalið</li>
+        <li><svg><use href="#check" stroke="#1E6FB5" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Auglýsingakostnaður til Google: 60.000 kr. samtals fyrir leitarorðin</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="num-eyebrow mt-12">Af hverju þetta skiptir máli</div>
+  <div class="grid-3 mt-6">
+    <div class="feature">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+      <div><h4>Skalanlegt</h4><p>Auðvelt að bæta við ferðum, tungumálum og efni án þess að byrja upp á nýtt.</p></div>
+    </div>
+    <div class="feature">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h13M12 5l7 7-7 7"/></svg></div>
+      <div><h4>Betra flæði</h4><p>Gesturinn kemst frá fyrstu heimsókn að bókun í færri skrefum – á öllum tækjum.</p></div>
+    </div>
+    <div class="feature">
+      <div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 7v4l2.5 2.5"/></svg></div>
+      <div><h4>Finnst í leit og gervigreind</h4><p>Uppbygging vefsins sniðin að Google og gervigreindarleit á borð við ChatGPT og Gemini.</p></div>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="val"><b>11 dagar</b><span>frá staðfestingu að útgáfu</span></div>
+    <div class="txt"><b>Nýi vefurinn fer í loftið fyrst – og Google herferðirnar fylgja strax á eftir.</b><span>Þannig lendir auglýsingaumferðin á vef sem er byggður til að breyta heimsóknum í bókanir.</span></div>
+  </div>
+
+  <div class="pagefoot"><span>Whales Hauganes · Tilboð um nýjan vef og Google auglýsingar</span><span class="pg">2</span></div>
+</section>
+
+<!-- =========================================================
+     PAGE 3 · 01 NÝR VEFUR
+     ========================================================= -->
+<section class="page">
+  <div class="pagehead">
+    <a class="logo dark" href="https://whales.is/"><svg class="fluke"><use href="#fluke"/></svg><span class="wordmark"><b>WHALES</b><span>Hauganes</span></span></a>
+    <div class="crumb"><b>01</b> · Nýr vefur</div>
+  </div>
+
+  <div class="num-eyebrow">01 · Nýr vefur</div>
+  <h2 style="margin-top:3mm">Vefur sem vex með ykkur</h2>
+  <p class="lead">Tíminn er réttur fyrir uppfærða útgáfu af whales.is: hraðari, skýrari og byggða til að stækka – með nútímalegu útliti og skipulagi sem leitarvélar og gervigreind eiga auðvelt með að lesa.</p>
+
+  <div class="grid-2 mt-10" style="grid-template-columns: 1.15fr 0.85fr; gap: 9mm; align-items: start;">
+    <div>
+      <div class="num-eyebrow">Innifalið</div>
+      <ul class="list mt-6">
+        <li><span class="chk"><svg><use href="#check"/></svg></span><div><b>Ný hönnun og uppfært útlit</b><span>Nútímalegt yfirbragð sem hæfir vörumerkinu og ferðunum.</span></div></li>
+        <li><span class="chk"><svg><use href="#check"/></svg></span><div><b>Skalanleg uppbygging</b><span>Nýjar ferðir, síður og tungumál bætast við á einfaldan hátt.</span></div></li>
+        <li><span class="chk"><svg><use href="#check"/></svg></span><div><b>Betra flæði að bókun</b><span>Skýr leið frá fyrstu heimsókn að bókun – færri skref, fleiri bókanir.</span></div></li>
+        <li><span class="chk"><svg><use href="#check"/></svg></span><div><b>Leitarvélabestun (SEO)</b><span>Uppbygging, hraði og efni bestað fyrir Google frá fyrsta degi.</span></div></li>
+        <li><span class="chk"><svg><use href="#check"/></svg></span><div><b>Tilbúinn fyrir gervigreindarleit</b><span>Efnið skipulagt þannig að ChatGPT, Gemini og Perplexity finni og mæli með Whales Hauganes.</span></div></li>
+        <li><span class="chk"><svg><use href="#check"/></svg></span><div><b>Farsímavænt, hratt og mælanlegt</b><span>Snjallsímar í fyrirrúmi og GA4 tenging til að fylgjast með árangri.</span></div></li>
+      </ul>
+    </div>
+
+    <div class="pricebox">
+      <svg class="bgf" aria-hidden="true"><use href="#fluke"/></svg>
+      <div class="lbl">Almennt verð</div>
+      <div class="was">600.000 kr. + vsk.</div>
+      <div class="lbl" style="margin-top:5mm">Ykkar verð</div>
+      <div class="now"><span class="big">300.000 kr.</span><span class="unit">+ vsk.</span></div>
+      <div class="save"><span class="pct">−50%</span>Þið sparið 300.000 kr.</div>
+      <p class="note">Sérkjör fyrir viðskiptavini sem þegar eru í þjónustu hjá okkur. Einskiptiskostnaður – hönnun, uppsetning og útgáfa innifalin.</p>
+    </div>
+  </div>
+
+  <div class="num-eyebrow mt-6">Tímalína · 11 dagar</div>
+  <div class="timeline">
+    <div class="tl"><div class="d">Dagar 1–2</div><b>Hönnun og uppbygging</b><span>Fyrsta útfærsla og skipulag vefsins kynnt.</span></div>
+    <div class="tl"><div class="d">Dagar 3–7</div><b>Uppsetning og efni</b><span>Síður, ferðir, myndir og bókunarflæði sett upp.</span></div>
+    <div class="tl"><div class="d">Dagar 8–10</div><b>SEO, prófanir og fínstilling</b><span>Hraði, leitarvélabestun og prófanir á öllum tækjum.</span></div>
+    <div class="tl last"><div class="d">Dagur 11</div><b>Útgáfa</b><span>Nýi vefurinn fer í loftið á whales.is.</span></div>
+  </div>
+
+  <div class="strip">
+    <div class="val"><b>5.000 kr.</b><span>+ vsk. á mánuði eftir útgáfu</span></div>
+    <div class="txt"><b>Hýsing og ótakmarkað viðhald – engin falin gjöld.</b><span>Innifalið eru ótakmarkaðar viðbætur og lagfæringar, öryggisuppfærslur og tæknileg aðstoð.</span></div>
+  </div>
+
+  <div class="pagefoot"><span>Whales Hauganes · Tilboð um nýjan vef og Google auglýsingar</span><span class="pg">3</span></div>
+</section>
+
+<!-- =========================================================
+     PAGE 4 · 02 GOOGLE AUGLÝSINGAPAKKI
+     ========================================================= -->
+<section class="page">
+  <div class="pagehead">
+    <a class="logo dark" href="https://whales.is/"><svg class="fluke"><use href="#fluke"/></svg><span class="wordmark"><b>WHALES</b><span>Hauganes</span></span></a>
+    <div class="crumb"><b>02</b> · Google auglýsingapakki</div>
+  </div>
+
+  <div class="num-eyebrow">02 · Google auglýsingapakki</div>
+  <h2 style="margin-top:3mm">Á réttum stað þegar leitað er að hvalaskoðun</h2>
+  <p class="lead">Við setjum upp og rekum Google auglýsingar á helstu leitarorðum um hvalaskoðun á Norðurlandi – fyrir innlenda og erlenda gesti, með sérstakri áherslu á Asíumarkað þar sem tækifærin eru mikil.</p>
+
+  <div class="num-eyebrow mt-8">Markhópar</div>
+  <div class="grid-3 mt-6">
+    <div class="aud"><b>Innlendir gestir</b><span>Íslendingar á ferð um Norðurland sem leita að hvalaskoðun.</span></div>
+    <div class="aud"><b>Erlendir ferðamenn</b><span>Leit á ensku um hvalaskoðun, Akureyri og Eyjafjörð.</span></div>
+    <div class="aud focus"><span class="ftag">Sérstök áhersla</span><b>Asíumarkaður</b><span>Herferðir sniðnar að leitarhegðun og tungumálum gesta frá Asíu.</span></div>
+  </div>
+
+  <div class="grid-2 mt-8" style="grid-template-columns: 1.15fr 0.85fr; gap: 9mm; align-items: start;">
+    <div>
+      <div class="num-eyebrow">Innifalið</div>
+      <ul class="list mt-6">
+        <li><span class="chk"><svg><use href="#check"/></svg></span><div><b>Leitarorðagreining</b><span>Val á helstu leitarorðum fyrir hvern markhóp og markað.</span></div></li>
+        <li><span class="chk"><svg><use href="#check"/></svg></span><div><b>Uppsetning herferða í Google Ads</b><span>Herferðir, auglýsingatextar og markhópastillingar.</span></div></li>
+        <li><span class="chk"><svg><use href="#check"/></svg></span><div><b>Lendingarsíður samstilltar við nýja vefinn</b><span>Auglýsingar leiða beint á síður sem eru byggðar til að selja.</span></div></li>
+        <li><span class="chk"><svg><use href="#check"/></svg></span><div><b>Heildarviðhald herferða</b><span>Tilboðsstýring, neikvæð leitarorð og stöðug bestun allan tímann.</span></div></li>
+        <li><span class="chk"><svg><use href="#check"/></svg></span><div><b>Mánaðarlegar skýrslur</b><span>Skýrar tölur um smelli, kostnað og árangur – á mannamáli.</span></div></li>
+      </ul>
+    </div>
+
+    <div class="pricebox">
+      <svg class="bgf" aria-hidden="true"><use href="#fluke"/></svg>
+      <div class="row">
+        <div class="t"><b>Þjónustugjald</b><span>2 mánaða tilboð · heildarviðhald og skýrslur innifalið</span></div>
+        <div class="p"><b>140.000 kr.</b><span>+ vsk. á mánuði</span></div>
+      </div>
+      <div class="row">
+        <div class="t"><b>Kostnaður til Google</b><span>Auglýsingakostnaður fyrir leitarorðin · greiðist beint til Google</span></div>
+        <div class="p"><b>60.000 kr.</b><span>samtals</span></div>
+      </div>
+      <p class="note" style="margin-top:2mm">Herferðirnar fara í loftið um leið og nýi vefurinn er kominn upp.</p>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="val"><b>2 mánuðir</b><span>skýrsla í lok hvers mánaðar</span></div>
+    <div class="txt"><b>Nægur tími til að safna gögnum, sjá hvað virkar og fínstilla.</b><span>Að tímabilinu loknu er staðan metin saman og ákveðið hvernig best er að halda áfram.</span></div>
+  </div>
+
+  <div class="pagefoot"><span>Whales Hauganes · Tilboð um nýjan vef og Google auglýsingar</span><span class="pg">4</span></div>
+</section>
+
+<!-- =========================================================
+     PAGE 5 · SAMANTEKT OG NÆSTU SKREF
+     ========================================================= -->
+<section class="page">
+  <div class="pagehead">
+    <a class="logo dark" href="https://whales.is/"><svg class="fluke"><use href="#fluke"/></svg><span class="wordmark"><b>WHALES</b><span>Hauganes</span></span></a>
+    <div class="crumb"><b>Tilboð</b> · Samantekt og næstu skref</div>
+  </div>
+
+  <div class="num-eyebrow">Samantekt</div>
+  <h2 style="margin-top:3mm">Verð og næstu skref</h2>
+
+  <table class="sum">
+    <thead><tr><th>Liður</th><th>Fyrirkomulag</th><th>Verð</th></tr></thead>
+    <tbody>
+      <tr class="hl">
+        <td><div class="t">Nýr vefur</div><div class="s">Hönnun, uppsetning, SEO og útgáfa á 11 dögum</div></td>
+        <td><div class="when">Einskiptiskostnaður</div></td>
+        <td><span class="was">600.000 kr. + vsk.</span><div class="p">300.000 kr.<small>+ vsk.</small></div></td>
+      </tr>
+      <tr>
+        <td><div class="t">Hýsing og ótakmarkað viðhald</div><div class="s">Hýsing, öryggisuppfærslur, viðbætur og tæknileg aðstoð</div></td>
+        <td><div class="when">Mánaðarlega, eftir útgáfu</div></td>
+        <td><div class="p">5.000 kr.<small>+ vsk. / mán.</small></div></td>
+      </tr>
+      <tr>
+        <td><div class="t">Google auglýsingapakki – þjónustugjald</div><div class="s">Uppsetning, heildarviðhald herferða og mánaðarlegar skýrslur</div></td>
+        <td><div class="when">Mánaðarlega í 2 mánuði</div></td>
+        <td><div class="p">140.000 kr.<small>+ vsk. / mán.</small></div></td>
+      </tr>
+      <tr>
+        <td><div class="t">Auglýsingakostnaður til Google</div><div class="s">Fyrir leitarorðin · greiðist beint til Google</div></td>
+        <td><div class="when">Samtals</div></td>
+        <td><div class="p">60.000 kr.</div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="num-eyebrow mt-8">Næstu skref</div>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><b>Staðfesting</b><span>Þið staðfestið tilboðið og við hefjumst handa samdægurs.</span></div>
+    <div class="step"><div class="n">2</div><b>Hönnun</b><span>Fyrsta útfærsla nýja vefsins kynnt innan tveggja daga.</span></div>
+    <div class="step"><div class="n">3</div><b>Útgáfa</b><span>Nýi vefurinn fer í loftið á degi 11.</span></div>
+    <div class="step"><div class="n">4</div><b>Google herferðir</b><span>Auglýsingarnar fara í loftið um leið og vefurinn er kominn upp.</span></div>
+  </div>
+
+  <div class="terms">
+    <div class="box">
+      <div class="h">Greiðslufyrirkomulag</div>
+      <p>Nýr vefur: 50% við staðfestingu og 50% við útgáfu.</p>
+      <p>Þjónustugjald Google auglýsinga greiðist mánaðarlega. Auglýsingakostnaður greiðist beint til Google.</p>
+    </div>
+    <div class="box">
+      <div class="h">Skilmálar</div>
+      <p>Öll verð eru án vsk. nema annað sé tekið fram. Engin falin gjöld – innifalið í mánaðarlegu verði eru ótakmarkaðar viðbætur við vefinn.</p>
+      <p>Tilboðið gildir til 18. september 2026.</p>
+    </div>
+  </div>
+
+  <div class="closing">
+    <svg class="bgf" aria-hidden="true"><use href="#fluke"/></svg>
+    <div>
+      <h3>Við hlökkum til að vinna með ykkur.</h3>
+      <p>Hafið samband ef einhverjar spurningar vakna – við svörum sama dag.</p>
+    </div>
+    <div class="contact"><b>[Nafn]</b>[Fyrirtæki]<br>[netfang] · [sími]</div>
+  </div>
+
+  <div class="pagefoot"><span>Whales Hauganes · Tilboð um nýjan vef og Google auglýsingar</span><span class="pg">5</span></div>
+</section>
+
+</body>
+</html>
