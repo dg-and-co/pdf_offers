@@ -7,47 +7,53 @@
 <link rel="stylesheet" href="../../assets/fonts/inter/inter.css">
 <link rel="stylesheet" href="../../assets/offer.css">
 <style>
-  /* Brand: Vélasalan — accent is a placeholder until the official brand colors are confirmed */
+  /* Brand: Vélasalan — #3258a2 blue, #d77d1b orange, white, black */
   :root {
     --black: #111111;
     --grey:  #5F6368;
-    --accent: #1F4E79;
+    --blue:  #3258A2;
+    --orange: #D77D1B;
+    --accent: #3258A2;
     --rule:  #D9DBDB;
     --rule-strong: #111111;
     --white: #FFFFFF;
   }
-  .cover .hero .kicker { color: var(--accent); }
+  .brand { font-size: 11pt; font-weight: 700; letter-spacing: -0.01em; color: var(--blue); }
+  .brand.small { font-size: 9.5pt; }
+
+  /* Cover: solid brand blue, white type, orange accent */
+  .cover { background: var(--blue); color: var(--white); }
+  .cover .brand { color: var(--white); }
+  .cover .top { align-items: baseline; }
+  .cover .top .r { color: rgba(255,255,255,.7); }
+  .cover .top .r b { color: var(--white); }
+  .cover .hero .bar { background: var(--orange); }
+  .cover .hero .kicker { color: var(--orange); }
+  .cover .sub { color: rgba(255,255,255,.82); }
+  .cover .meta { border-top-color: rgba(255,255,255,.35); }
+  .cover .meta .label { color: rgba(255,255,255,.65); }
+  .cover .meta .v span { color: rgba(255,255,255,.75); }
+
+  /* Inner pages: orange only for the headline number */
+  .facts-row .total .price { color: var(--orange); }
+  table.sum tr.total td .p { color: var(--orange); }
+  .steps .n { color: var(--blue); }
 </style>
 </head>
 <body>
 
-<!-- Wordmark fallback. Replaced automatically by logo.png when that file exists next to this HTML. -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="vs-logo" viewBox="0 0 420 100">
-      <text x="0" y="58" font-family="Inter" font-weight="800" font-size="62" fill="#111111" letter-spacing="-2.5">VÉLASALAN</text>
-      <text x="2" y="86" font-family="Inter" font-weight="600" font-size="13" fill="#5F6368" letter-spacing="3.2">SJÓR OG IÐNAÐUR · SÍÐAN 1940</text>
-    </symbol>
-    <symbol id="vs-logo-small" viewBox="0 0 420 70">
-      <text x="0" y="58" font-family="Inter" font-weight="800" font-size="62" fill="#111111" letter-spacing="-2.5">VÉLASALAN</text>
-    </symbol>
-  </defs>
-</svg>
-
 <!-- =============================== PAGE 1 · COVER =============================== -->
 <section class="page cover">
   <div class="top">
-    <object class="logo" data="logo.png" type="image/png" style="width:58mm;height:14mm" aria-label="Vélasalan">
-      <svg viewBox="0 0 420 100"><use href="#vs-logo"/></svg>
-    </object>
+    <div class="brand">Vélasalan</div>
     <div class="r"><b>Tilboð</b>4. september 2026</div>
   </div>
 
   <div class="hero">
     <div class="bar"></div>
-    <div class="kicker">Vegvísir · Google og Meta auglýsingar</div>
-    <h1>Ein öflug byrjun – á Google, Facebook og Instagram.</h1>
-    <p class="sub">Óbindandi auglýsingapakki sem nær til viðskiptavina Vélasölunnar bæði þegar þeir leita að vörum og þjónustu og þar sem þeir verja tímanum sínum. Þetta er sú leið sem við teljum skynsamlegasta.</p>
+    <div class="kicker">Google og Meta auglýsingar - óbindandi</div>
+    <h1>Vegvísir fyrir Vélasöluna</h1>
+    <p class="sub">Ein öflug byrjun á Google, Facebook og Instagram sem nær til viðskiptavina Vélasölunnar bæði þegar þeir leita að vörum og þjónustu og þar sem þeir verja tímanum sínum. Þetta er sú leið sem við teljum skynsamlegasta.</p>
   </div>
 
   <div class="meta">
@@ -61,9 +67,7 @@
 <!-- =============================== PAGE 2 · VEGVÍSIRINN =============================== -->
 <section class="page">
   <div class="head">
-    <object class="logo" data="logo.png" type="image/png" style="width:34mm;height:5.7mm" aria-label="Vélasalan">
-      <svg viewBox="0 0 420 70"><use href="#vs-logo-small"/></svg>
-    </object>
+    <div class="brand small">Vélasalan</div>
     <div class="r"><b>Vegvísirinn</b> · Google og Meta auglýsingar</div>
   </div>
 
@@ -72,8 +76,8 @@
   <div class="sec wide first">
     <div>
       <div class="no">01</div>
-      <h2>Google auglýsingar – þar sem leitað er</h2>
-      <p class="desc">Leitarauglýsingar á helstu leitarorðum um vélar, varahluti, dælur, siglingatæki og þjónustu – svo Vélasalan birtist efst þegar útgerðir, iðnfyrirtæki og bátaeigendur leita.</p>
+      <h2>Google auglýsingar - þar sem leitað er</h2>
+      <p class="desc">Leitarauglýsingar á helstu leitarorðum um vélar, varahluti, dælur, siglingatæki og þjónustu, svo Vélasalan birtist efst þegar útgerðir, iðnfyrirtæki og bátaeigendur leita.</p>
       <ul class="inc">
         <li>Leitarorðagreining fyrir vörur og þjónustu</li>
         <li>Leitarauglýsingar í Google Ads</li>
@@ -88,8 +92,8 @@
   <div class="sec wide">
     <div>
       <div class="no">02</div>
-      <h2>Meta auglýsingar – þar sem tíminn fer</h2>
-      <p class="desc">Auglýsingar á Facebook og Instagram sem ná til rétta hópsins – útgerða, skipstjóra, iðnfyrirtækja og bátaeigenda – og minna á Vélasöluna með endurmarkaðssetningu til þeirra sem hafa heimsótt vefinn.</p>
+      <h2>Meta auglýsingar - þar sem tíminn fer</h2>
+      <p class="desc">Auglýsingar á Facebook og Instagram sem ná til rétta hópsins, útgerða, skipstjóra, iðnfyrirtækja og bátaeigenda, og minna á Vélasöluna með endurmarkaðssetningu til þeirra sem hafa heimsótt vefinn.</p>
       <ul class="inc">
         <li>Markhópar og uppsetning í Meta Ads</li>
         <li>Auglýsingar fyrir Facebook og Instagram</li>
@@ -112,7 +116,7 @@
     </div>
     <div class="total">
       <dt>Samtals á mánuði</dt>
-      <dd><div class="price">200.000 kr.</div><div class="note">Ein öflug byrjun – engin binding. Vsk. leggst á þjónustugjald.</div></dd>
+      <dd><div class="price">200.000 kr.</div><div class="note">Ein öflug byrjun, engin binding. Vsk. leggst á þjónustugjald.</div></dd>
     </div>
   </dl>
 
@@ -122,9 +126,7 @@
 <!-- =============================== PAGE 3 · SAMANTEKT =============================== -->
 <section class="page">
   <div class="head">
-    <object class="logo" data="logo.png" type="image/png" style="width:34mm;height:5.7mm" aria-label="Vélasalan">
-      <svg viewBox="0 0 420 70"><use href="#vs-logo-small"/></svg>
-    </object>
+    <div class="brand small">Vélasalan</div>
     <div class="r"><b>Samantekt</b> · Verð og næstu skref</div>
   </div>
 
@@ -132,12 +134,12 @@
     <thead><tr><th>Liður</th><th>Fyrirkomulag</th><th>Verð</th></tr></thead>
     <tbody>
       <tr>
-        <td><div class="t">Þjónustugjald – Google og Meta auglýsingar</div><div class="s">Uppsetning, rekstur, bestun og mánaðarlegar skýrslur</div></td>
+        <td><div class="t">Þjónustugjald - Google og Meta auglýsingar</div><div class="s">Uppsetning, rekstur, bestun og mánaðarlegar skýrslur</div></td>
         <td><div class="w">Mánaðarlega, óbindandi</div></td>
         <td><div class="p">110.000 kr.<small>+ vsk. / mán.</small></div></td>
       </tr>
       <tr>
-        <td><div class="t">Auglýsingafé – Google Ads og Meta Ads</div><div class="s">Greiðist beint til Google og Meta</div></td>
+        <td><div class="t">Auglýsingafé - Google Ads og Meta Ads</div><div class="s">Greiðist beint til Google og Meta</div></td>
         <td><div class="w">Mánaðarlega</div></td>
         <td><div class="p">90.000 kr.<small>/ mán.</small></div></td>
       </tr>
@@ -154,7 +156,7 @@
     <div class="steps">
       <div><div class="n">VIKA 1</div><b>Undirbúningur</b><span>Markhópar, leitarorð, myndefni og mælingar sett upp.</span></div>
       <div><div class="n">VIKA 2</div><b>Uppsetning</b><span>Herferðir settar upp í Google Ads og Meta og samþykktar með ykkur.</span></div>
-      <div><div class="n">VIKA 3</div><b>Í loftið</b><span>Báðar rásir fara í loftið samtímis – ein öflug byrjun.</span></div>
+      <div><div class="n">VIKA 3</div><b>Í loftið</b><span>Báðar rásir fara í loftið samtímis, ein öflug byrjun.</span></div>
       <div><div class="n">MÁNAÐARLEGA</div><b>Bestun og skýrslur</b><span>Staðan metin og auglýsingafé beint þangað sem árangurinn er mestur.</span></div>
     </div>
   </div>
@@ -167,7 +169,7 @@
     </div>
     <div>
       <span class="label">Skilmálar</span>
-      <p>Óbindandi – hægt er að hætta hvenær sem er. Öll verð eru án vsk. nema annað sé tekið fram.</p>
+      <p>Óbindandi, hægt er að hætta hvenær sem er. Öll verð eru án vsk. nema annað sé tekið fram.</p>
       <p>Tilboðið gildir til 18. september 2026.</p>
     </div>
   </div>
