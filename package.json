@@ -4,7 +4,9 @@
   "private": true,
   "description": "Landing-page style PDF offers rendered from HTML with headless Chromium",
   "scripts": {
-    "build:whales": "node build.js offers/whales-hauganes/index.html offers/whales-hauganes/Whales-Hauganes-Tilbod.pdf"
+    "build": "npm run build:whales && npm run build:velasalan",
+    "build:whales": "node build.js offers/whales-hauganes/index.html offers/whales-hauganes/Whales-Hauganes-Tilbod.pdf",
+    "build:velasalan": "node build.js offers/velasalan/index.html offers/velasalan/Velasalan-Tilbod.pdf"
   },
   "devDependencies": {
     "playwright": "^1.56.1"

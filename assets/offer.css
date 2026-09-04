@@ -1,0 +1,137 @@
+/* Shared stylesheet for landing-page style PDF offers (A4, Inter).
+   Each offer defines its own brand tokens in a :root block:
+   --black, --grey, --accent, --rule, --rule-strong, --white */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    color: var(--black);
+    background: #EDEEEE;
+    font-size: 10pt;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: 'tnum', 'cv11';
+  }
+  @page { size: A4; margin: 0; }
+
+  .page {
+    width: 210mm; height: 297mm; position: relative; overflow: hidden;
+    background: var(--white); padding: 18mm 20mm 16mm;
+    break-after: page; page-break-after: always;
+    display: flex; flex-direction: column;
+  }
+  .page:last-child { break-after: auto; page-break-after: auto; }
+  @media screen {
+    body { padding: 24px 0; }
+    .page { margin: 0 auto 24px; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+  }
+  @media print { body { background: none; } }
+
+  h1, h2, h3, p, ul, dl, dd, dt { margin: 0; }
+  h1 { font-size: 34pt; font-weight: 800; line-height: 1.08; letter-spacing: -0.035em; }
+  h2 { font-size: 19pt; font-weight: 700; line-height: 1.2; letter-spacing: -0.025em; }
+  h3 { font-size: 11pt; font-weight: 700; line-height: 1.3; }
+  .grey { color: var(--grey); }
+  .accent { color: var(--accent); }
+  .label { font-size: 7.5pt; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--grey); }
+
+  /* ---------- logo ---------- */
+  /* Uses logo.png from this folder when present; otherwise renders the inline SVG recreation. */
+  object.logo { display: block; }
+  object.logo svg { width: 100%; height: 100%; display: block; }
+
+  /* ---------- running header / footer ---------- */
+  .head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 4mm; border-bottom: 1px solid var(--rule-strong);
+  }
+  .head .r { font-size: 8.5pt; color: var(--grey); }
+  .head .r b { color: var(--black); font-weight: 600; }
+  .foot {
+    margin-top: auto; padding-top: 4mm; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; font-size: 8pt; color: var(--grey);
+  }
+  .foot b { color: var(--black); font-weight: 600; }
+
+  /* ---------- cover ---------- */
+  .cover .top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .cover .top .r { text-align: right; font-size: 9pt; color: var(--grey); line-height: 1.6; }
+  .cover .top .r b { display: block; color: var(--black); font-weight: 600; }
+  .cover .hero { margin-top: auto; margin-bottom: 22mm; }
+  .cover .hero .bar { width: 14mm; height: 3px; background: var(--accent); margin-bottom: 8mm; }
+  .cover .hero .kicker { font-size: 10pt; font-weight: 600; color: var(--grey); margin-bottom: 4mm; }
+  .cover h1 { max-width: 168mm; font-size: 32pt; }
+  .cover .sub { margin-top: 7mm; max-width: 135mm; font-size: 11.5pt; line-height: 1.6; color: var(--grey); }
+  .cover .meta {
+    display: grid; grid-template-columns: 1.1fr 1fr 1fr 1.3fr; gap: 6mm;
+    padding-top: 5mm; border-top: 1px solid var(--rule-strong);
+  }
+  .cover .meta .v { margin-top: 2mm; font-size: 9.5pt; font-weight: 600; line-height: 1.45; }
+  .cover .meta .v span { display: block; font-weight: 400; color: var(--grey); }
+
+  /* ---------- offer sections ---------- */
+  .intro { margin-top: 9mm; font-size: 11pt; line-height: 1.6; color: var(--grey); max-width: 150mm; }
+  .sec { display: grid; grid-template-columns: 1fr 64mm; gap: 12mm; padding: 8mm 0; border-top: 1px solid var(--rule); }
+  .sec.first { border-top: 0; margin-top: 4mm; }
+  .sec .no { font-size: 8.5pt; font-weight: 700; letter-spacing: .12em; color: var(--accent); }
+  .sec h2 { margin-top: 1.5mm; }
+  .sec .desc { margin-top: 3mm; color: var(--grey); font-size: 9.8pt; line-height: 1.55; }
+  .sec ul.inc { list-style: none; padding: 0; margin: 5mm 0 0; columns: 2; column-gap: 8mm; }
+  .sec ul.inc li {
+    break-inside: avoid; font-size: 9.3pt; font-weight: 500; line-height: 1.4;
+    padding: 2.4mm 0; border-top: 1px solid var(--rule);
+  }
+  .sec ul.inc li::before { content: '–'; color: var(--accent); font-weight: 700; margin-right: 6px; }
+
+  .facts dt { font-size: 7.5pt; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--grey); }
+  .facts dd { margin-top: 1mm; }
+  .facts dd + dt { margin-top: 4.5mm; }
+  .facts .was { font-size: 11pt; color: var(--grey); text-decoration: line-through; text-decoration-thickness: 1.5px; font-weight: 500; }
+  .facts .price { font-size: 22pt; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; white-space: nowrap; }
+  .facts .price small { font-size: 9.5pt; font-weight: 500; color: var(--grey); letter-spacing: 0; margin-left: 4px; }
+  .facts .mid { font-size: 13pt; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+  .facts .mid small { font-size: 9pt; font-weight: 500; color: var(--grey); letter-spacing: 0; margin-left: 3px; }
+  .facts .note { font-size: 8.6pt; color: var(--grey); line-height: 1.45; margin-top: 1mm; }
+  .facts .save {
+    display: inline-block; margin-top: 2mm; font-size: 8.5pt; font-weight: 700; color: var(--accent);
+    border: 1.5px solid var(--accent); border-radius: 3px; padding: 2px 7px; letter-spacing: .02em;
+  }
+
+  /* ---------- summary ---------- */
+  table.sum { width: 100%; border-collapse: collapse; margin-top: 6mm; }
+  table.sum th { text-align: left; padding: 0 0 2.5mm; font-size: 7.5pt; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--grey); border-bottom: 1px solid var(--rule-strong); }
+  table.sum td { padding: 3.6mm 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  table.sum th:last-child, table.sum td:last-child { text-align: right; white-space: nowrap; }
+  table.sum td .t { font-weight: 600; font-size: 10pt; }
+  table.sum td .s { font-size: 8.6pt; color: var(--grey); margin-top: 1px; }
+  table.sum td .w { font-size: 9.3pt; color: var(--grey); }
+  table.sum td .p { font-size: 12pt; font-weight: 700; letter-spacing: -0.02em; }
+  table.sum td .p small { font-size: 8.6pt; font-weight: 500; color: var(--grey); margin-left: 3px; }
+  table.sum td .was { display: block; font-size: 8.4pt; color: var(--grey); text-decoration: line-through; }
+  table.sum tr.total td { border-bottom: 1px solid var(--rule-strong); }
+
+  .block { margin-top: 9mm; }
+  .block .label { display: block; padding-bottom: 2.5mm; border-bottom: 1px solid var(--rule-strong); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6mm; margin-top: 4mm; }
+  .steps .n { font-size: 8.5pt; font-weight: 700; color: var(--accent); letter-spacing: .08em; }
+  .steps b { display: block; margin-top: 1.5mm; font-size: 10pt; }
+  .steps span { display: block; margin-top: 1mm; font-size: 8.8pt; color: var(--grey); line-height: 1.45; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; }
+  .two p { margin-top: 3mm; font-size: 9.2pt; line-height: 1.55; }
+  .two p + p { margin-top: 1.5mm; }
+
+  .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; align-items: end; }
+  .contact .lead { font-size: 15pt; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; max-width: 80mm; }
+  .contact .card { font-size: 9.6pt; line-height: 1.6; }
+  .contact .card b { display: block; font-size: 11pt; font-weight: 700; }
+  .contact .card a { color: var(--black); text-decoration: none; }
+
+  /* ---------- full-width sections and a facts row (used when pricing is per package, not per section) ---------- */
+  .sec.wide { grid-template-columns: 1fr; }
+  .sec.wide .desc { max-width: 150mm; }
+  .facts-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8mm;
+    margin-top: 2mm; padding: 6mm 0; border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule);
+  }
+  .facts-row .price { font-size: 20pt; }
+  .facts-row .total .price { color: var(--accent); }
