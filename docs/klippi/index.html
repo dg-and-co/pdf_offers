@@ -60,6 +60,10 @@
   .btn { display: inline-block; padding: 2.2mm 5mm; border-radius: 999px; font-size: 9pt; font-weight: 700; border: 1.5px solid var(--accent); color: var(--accent); }
   .btn.fill { background: var(--accent); color: var(--white); }
 
+  table.cmp { width: 100%; border-collapse: collapse; margin-top: 4mm; font-size: 9.2pt; }
+  table.cmp th { text-align: left; padding: 0 3mm 2.5mm 0; font-size: 7.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); border-bottom: 1px solid var(--rule-strong); }
+  table.cmp td { padding: 3mm 3mm 3mm 0; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--grey); line-height: 1.45; }
+  table.cmp td:first-child { font-weight: 700; color: var(--black); width: 30mm; }
   .note { margin-top: 5mm; padding-left: 4mm; border-left: 3px solid var(--accent); font-size: 9.2pt; color: var(--grey); line-height: 1.5; max-width: 160mm; }
   .note b { color: var(--black); }
 </style>
@@ -142,7 +146,7 @@
     </div>
   </div>
 
-  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>2 / 7</span></div>
+  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>2 / 8</span></div>
 </section>
 
 <!-- ============ PAGE 3 · BUILDING BLOCKS ============ -->
@@ -172,7 +176,7 @@
 
   <div class="note"><b>Rule that applies to every card type:</b> a card is only released after the customer enters name and phone number. Claiming a card and giving the store a marketing contact are the same action.</div>
 
-  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>3 / 7</span></div>
+  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>3 / 8</span></div>
 </section>
 
 <!-- ============ PAGE 4 · STAMP CARD ============ -->
@@ -199,7 +203,7 @@
     <li><span class="n">06</span><div><span class="who">Manager</span><b>SMS marketing</b><p>The store uses the phone numbers collected through claims to send SMS about new offers, drops and limited deals.</p></div></li>
   </ol>
 
-  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>4 / 7</span></div>
+  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>4 / 8</span></div>
 </section>
 
 <!-- ============ PAGE 5 · GIFT CARD: CREATE AND DELIVER ============ -->
@@ -231,34 +235,49 @@
     <div class="col"><span class="who">Option 3</span><b>Reference code (physical gift)</b><p>A 5-character code of letters and numbers appears. The cashier takes a pre-printed physical gift card from the cabinet, fills in the two blanks (amount and the 5-box code), and packs it in an envelope. Claim instructions are printed at the bottom of the card.</p></div>
   </div>
 
-  <div class="note"><b>Claiming a physical card.</b> The recipient goes to the store's claim page, for example giftcard.mettasport.is, or to klippi.is/giftcard, and fills in three fields: full name, phone number, reference code. Every reference code is unique across all stores, so klippi.is/giftcard always resolves the right card. Claiming releases the card to the wallet and saves the recipient's details for marketing.</div>
-
-  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>5 / 7</span></div>
+  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>5 / 8</span></div>
 </section>
 
-<!-- ============ PAGE 6 · GIFT CARD REDEEM + STORE CREDIT ============ -->
+<!-- ============ PAGE 6 · GIFT CARD: CLAIM AND REDEEM ============ -->
 <section class="page">
   <div class="head">
     <div class="brand small"><svg><use href="#klippi-mark"/></svg>Klippi</div>
-    <div class="r"><b>Flow 02 · 03</b> · Redeem and Inneignarkort</div>
+    <div class="r"><b>Flow 02</b> · Gjafakort, continued</div>
   </div>
 
   <div class="sec wide first">
     <div>
       <div class="no">Flow 02 · continued</div>
-      <h2>Gjafakort: redeem</h2>
-      <p class="desc">Later visits. The gift card works like a balance that the cashier deducts from by scanning the card.</p>
+      <h2>Gjafakort: claim and redeem</h2>
+      <p class="desc">A physical gift card is claimed by the person who receives it. Any gift card, however it was delivered, is redeemed the same way at the counter.</p>
     </div>
   </div>
 
-  <div class="label" style="display:block; margin-top:0; padding-bottom:2mm; border-bottom:1px solid var(--rule-strong);">C · Redeem</div>
+  <div class="label" style="display:block; margin-top:0; padding-bottom:2mm; border-bottom:1px solid var(--rule-strong);">C · Claim a physical card</div>
+  <ol class="flow">
+    <li><span class="n">01</span><div><span class="who">Recipient</span><b>Open the envelope</b><p>The card shows the amount, the 5-character reference code and, at the bottom, instructions for claiming it.</p></div></li>
+    <li><span class="n">02</span><div><span class="who">Recipient</span><b>Go to the claim page</b><p>Either the store's own claim page, for example giftcard.mettasport.is, which Klippi sets up for each client, or klippi.is/giftcard, which works for every store because every reference code is unique.</p></div></li>
+    <li><span class="n">03</span><div><span class="who">Recipient · System</span><b>Fill in three fields</b><p>Full name, phone number, reference code. The card is released to the wallet and the recipient's details are saved for marketing.</p></div></li>
+  </ol>
+
+  <div class="label" style="display:block; margin-top:5mm; padding-bottom:2mm; border-bottom:1px solid var(--rule-strong);">D · Redeem</div>
   <ol class="flow">
     <li><span class="n">01</span><div><span class="who">Cashier</span><b>Total the purchase</b><p>Scan the items and note the total amount.</p></div></li>
     <li><span class="n">02</span><div><span class="who">Cashier</span><b>Scan the gift card</b><p>Tikki → <code>Scan</code> → scan the QR code on the customer's gift card. The gift card profile appears.</p></div></li>
     <li><span class="n">03</span><div><span class="who">Cashier · System</span><b>Deduct and confirm</b><p>Deduct the purchase amount from the balance and tap <code>Confirm</code>. The card in the wallet updates automatically.</p></div></li>
   </ol>
 
-  <div class="sec wide">
+  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>6 / 8</span></div>
+</section>
+
+<!-- ============ PAGE 7 · STORE CREDIT ============ -->
+<section class="page">
+  <div class="head">
+    <div class="brand small"><svg><use href="#klippi-mark"/></svg>Klippi</div>
+    <div class="r"><b>Flow 03</b> · Inneignarkort</div>
+  </div>
+
+  <div class="sec wide first">
     <div>
       <div class="no">Flow 03</div>
       <h2>Inneignarkort (store credit)</h2>
@@ -273,10 +292,26 @@
     <li><span class="n">04</span><div><span class="who">Cashier · System</span><b>Redeem on the next visit</b><p>Scan the Inneignarkort QR code, edit the balance in the card profile, confirm. The card updates automatically.</p></div></li>
   </ol>
 
-  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>6 / 7</span></div>
+  <div class="sec wide" style="padding-bottom:0;">
+    <div>
+      <div class="no">Side by side</div>
+      <h2>Gjafakort and Inneignarkort</h2>
+      <table class="cmp">
+        <thead><tr><th></th><th>Gjafakort</th><th>Inneignarkort</th></tr></thead>
+        <tbody>
+          <tr><td>Created when</td><td>A customer pays for a gift card</td><td>A customer returns an item</td></tr>
+          <tr><td>Amount</td><td>What the customer paid</td><td>What the returned item cost</td></tr>
+          <tr><td>Delivery</td><td>Display now, Send via email, Reference code</td><td>Display now, Send via email</td></tr>
+          <tr><td>Redeem</td><td colspan="2">Scan the card, deduct the amount, Confirm. The card updates automatically.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>7 / 8</span></div>
 </section>
 
-<!-- ============ PAGE 7 · BUILD SUMMARY ============ -->
+<!-- ============ PAGE 8 · BUILD SUMMARY ============ -->
 <section class="page">
   <div class="head">
     <div class="brand small"><svg><use href="#klippi-mark"/></svg>Klippi</div>
@@ -314,7 +349,7 @@
     </div>
   </div>
 
-  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>7 / 7</span></div>
+  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>8 / 8</span></div>
 </section>
 
 </body>
