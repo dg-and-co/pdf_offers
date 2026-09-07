@@ -4,10 +4,11 @@
   "private": true,
   "description": "Landing-page style PDF offers rendered from HTML with headless Chromium",
   "scripts": {
-    "build": "npm run build:whales && npm run build:velasalan && npm run build:klippi",
+    "build": "npm run build:whales && npm run build:velasalan && npm run build:klippi && npm run build:klippi-pricing",
     "build:whales": "node build.js offers/whales-hauganes/index.html offers/whales-hauganes/Whales-Hauganes-Tilbod.pdf",
     "build:velasalan": "node build.js offers/velasalan/index.html offers/velasalan/Velasalan-Tilbod.pdf",
-    "build:klippi": "node build.js docs/klippi/index.html docs/klippi/Klippi-System-Breakdown.pdf"
+    "build:klippi": "node build.js docs/klippi/index.html docs/klippi/Klippi-System-Breakdown.pdf",
+    "build:klippi-pricing": "node build.js docs/klippi-pricing/index.html docs/klippi-pricing/Klippi-Verdskra.pdf"
   },
   "devDependencies": {
     "playwright": "^1.56.1"

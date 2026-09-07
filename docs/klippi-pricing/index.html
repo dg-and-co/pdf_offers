@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+<meta charset="utf-8">
+<title>Klippi – Verðskrá</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/fonts/inter/inter.css">
+<link rel="stylesheet" href="../../assets/offer.css">
+<style>
+  /* Brand: Klippi — white, black, #22c55f */
+  :root {
+    --black: #111111;
+    --grey:  #5F6368;
+    --accent: #22C55F;
+    --rule:  #E2E4E4;
+    --rule-strong: #111111;
+    --white: #FFFFFF;
+  }
+  .brand { display: inline-flex; align-items: center; gap: 3mm; font-size: 11pt; font-weight: 700; letter-spacing: -0.01em; }
+  .brand svg { width: 9mm; height: 9mm; }
+  .head { align-items: center; }
+
+  .hero { margin-top: 22mm; }
+  .hero .bar { width: 14mm; height: 3px; background: var(--accent); margin-bottom: 7mm; }
+  .hero .kicker { font-size: 10pt; font-weight: 600; color: var(--grey); margin-bottom: 4mm; }
+  .hero h1 { font-size: 36pt; }
+  .hero .sub { margin-top: 6mm; max-width: 140mm; font-size: 11.5pt; line-height: 1.6; color: var(--grey); }
+
+  .prices { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; margin-top: 16mm; padding-top: 7mm; border-top: 1px solid var(--rule-strong); }
+  .prices .label { display: block; }
+  .prices .big { margin-top: 3mm; font-size: 34pt; font-weight: 800; letter-spacing: -0.035em; line-height: 1; white-space: nowrap; }
+  .prices .big small { font-size: 11pt; font-weight: 500; color: var(--grey); letter-spacing: 0; margin-left: 5px; }
+  .prices .note { margin-top: 3mm; font-size: 9.5pt; color: var(--grey); line-height: 1.5; }
+
+  .included { margin-top: 14mm; }
+  .included .label { display: block; padding-bottom: 2.5mm; border-bottom: 1px solid var(--rule-strong); }
+  .included ul { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: 10mm; }
+  .included li { break-inside: avoid; display: flex; gap: 8px; align-items: baseline; padding: 3.2mm 0; border-bottom: 1px solid var(--rule); font-size: 10.5pt; font-weight: 600; }
+  .included li::before { content: '-'; color: var(--accent); font-weight: 700; }
+  .included li span { display: block; font-weight: 400; color: var(--grey); font-size: 9pt; margin-top: 1px; }
+
+  .terms { margin-top: auto; padding-top: 6mm; font-size: 9pt; color: var(--grey); line-height: 1.55; max-width: 150mm; }
+  .foot { margin-top: 6mm; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="klippi-mark" viewBox="0 0 200 200">
+      <g transform="rotate(-5 100 100)">
+        <rect x="24" y="66" width="162" height="98" rx="16" fill="#22C55F" opacity=".45"/>
+        <rect x="16" y="50" width="164" height="100" rx="16" fill="#22C55F"/>
+        <circle cx="48" cy="82" r="11" fill="#FFFFFF"/>
+        <circle cx="82" cy="82" r="11" fill="#FFFFFF"/>
+        <circle cx="116" cy="82" r="11" fill="#FFFFFF"/>
+        <circle cx="150" cy="82" r="11" fill="#FFFFFF"/>
+        <circle cx="48" cy="120" r="11" fill="#FFFFFF"/>
+        <circle cx="82" cy="120" r="11" fill="#FFFFFF"/>
+        <circle cx="116" cy="120" r="8.5" fill="none" stroke="#FFFFFF" stroke-width="5"/>
+        <circle cx="150" cy="120" r="8.5" fill="none" stroke="#FFFFFF" stroke-width="5"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<section class="page">
+  <div class="head">
+    <div class="brand"><svg><use href="#klippi-mark"/></svg>Klippi</div>
+    <div class="r"><b>Verðskrá</b> · September 2026</div>
+  </div>
+
+  <div class="hero">
+    <div class="bar"></div>
+    <div class="kicker">Verðskrá</div>
+    <h1>Eitt gjald á hvern stað.</h1>
+    <p class="sub">Stafræn klippikort, gjafakort og inneignarkort í Apple Wallet og Google Wallet. Eitt mánaðargjald á hvern stað, SMS greidd eftir notkun.</p>
+  </div>
+
+  <div class="prices">
+    <div>
+      <span class="label">Grunngjald</span>
+      <div class="big">11.990 kr.<small>+ vsk. / mán.</small></div>
+      <p class="note">Á hvern stað. Öll kort, allir innviðir og gjafakortasíða innifalin.</p>
+    </div>
+    <div>
+      <span class="label">SMS</span>
+      <div class="big">15 kr.<small>+ vsk. / SMS</small></div>
+      <p class="note">Greitt eftir notkun. Aðeins fyrir þau SMS sem þið sendið.</p>
+    </div>
+  </div>
+
+  <div class="included">
+    <span class="label">Innifalið í grunngjaldi</span>
+    <ul>
+      <li><div>Klippikort<span>Stimplar á kaup, verðlaun þegar kortið er fullt</span></div></li>
+      <li><div>Gjafakort<span>Á skjá, í tölvupósti eða sem líkamlegt kort með kóða</span></div></li>
+      <li><div>Inneignarkort<span>Inneign við vöruskil, notuð eins og gjafakort</span></div></li>
+      <li><div>SMS markaðssetning<span>Innviðir til að senda SMS á viðskiptavini</span></div></li>
+      <li><div>Netpóstmarkaðssetning<span>Innviðir til að senda tölvupóst á viðskiptavini</span></div></li>
+      <li><div>Gjafakortasíða á eigin léni<span>Til dæmis gjafakort.fyrirtaeki.is</span></div></li>
+    </ul>
+  </div>
+
+  <p class="terms">Öll verð eru án vsk. Grunngjald greiðist mánaðarlega fyrir hvern stað. SMS eru gerð upp mánaðarlega eftir fjölda sendra skilaboða.</p>
+
+  <div class="foot"><span><b>Klippi</b> · klippi.is</span><span>Daníel Spanó · +354 775 2212 · spanoehf@gmail.com</span></div>
+</section>
+
+</body>
+</html>

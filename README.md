@@ -14,6 +14,7 @@ Landing-page style PDF offers, authored as a single HTML file per offer and rend
 | Document | Source | Output |
 | --- | --- | --- |
 | Klippi system breakdown | `docs/klippi/index.html` | `docs/klippi/Klippi-System-Breakdown.pdf` |
+| Klippi price list (one page) | `docs/klippi-pricing/index.html` | `docs/klippi-pricing/Klippi-Verdskra.pdf` |
 
 ## Editing
 
