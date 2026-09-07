@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Klippi – System breakdown</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/fonts/inter/inter.css">
+<link rel="stylesheet" href="../../assets/offer.css">
+<style>
+  /* Brand: Klippi — white, black, #22c55f */
+  :root {
+    --black: #111111;
+    --grey:  #5F6368;
+    --accent: #22C55F;
+    --rule:  #E2E4E4;
+    --rule-strong: #111111;
+    --white: #FFFFFF;
+  }
+  .brand { display: inline-flex; align-items: center; gap: 3mm; font-size: 11pt; font-weight: 700; letter-spacing: -0.01em; }
+  .brand svg { width: 9mm; height: 9mm; }
+  .brand.small { font-size: 9.5pt; }
+  .brand.small svg { width: 7mm; height: 7mm; }
+  .cover .top { align-items: center; }
+  .cover .mark { width: 52mm; height: 52mm; margin-bottom: 10mm; }
+  .cover h1 { font-size: 36pt; }
+  .cover .sub { max-width: 145mm; }
+
+  /* section headings */
+  .sec.wide { padding: 7mm 0; }
+  .sec.wide .desc { max-width: 158mm; }
+  h2 { font-size: 18pt; }
+
+  /* three columns */
+  .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; margin-top: 4mm; }
+  .col { padding-top: 3mm; border-top: 2px solid var(--black); }
+  .col .who { display: block; font-size: 7.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+  .col b { display: block; margin-top: 1.5mm; font-size: 10.5pt; }
+  .col p { margin-top: 1.5mm; font-size: 9pt; color: var(--grey); line-height: 1.5; }
+
+  /* numbered flow */
+  .flow { list-style: none; padding: 0; margin: 4mm 0 0; }
+  .flow li { display: grid; grid-template-columns: 12mm 1fr; gap: 4mm; padding: 3.2mm 0; border-top: 1px solid var(--rule); }
+  .flow li:first-child { border-top: 0; }
+  .flow .n { font-size: 12pt; font-weight: 800; color: var(--accent); letter-spacing: -0.02em; line-height: 1.2; }
+  .flow .who { display: inline-block; font-size: 7.3pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: .5mm; }
+  .flow b { display: block; font-size: 10.5pt; line-height: 1.3; }
+  .flow p { margin-top: 1mm; font-size: 9.2pt; color: var(--grey); line-height: 1.5; max-width: 150mm; }
+  .flow code, .col code, .kv code { font-family: 'Inter', sans-serif; font-weight: 600; color: var(--black); background: #F1F3F3; border-radius: 3px; padding: 0 4px; font-size: .95em; }
+
+  /* compact definition rows */
+  .kv { display: grid; grid-template-columns: 34mm 1fr; gap: 2.5mm 6mm; margin-top: 4mm; font-size: 9.2pt; line-height: 1.5; }
+  .kv dt { font-weight: 700; color: var(--black); }
+  .kv dd { margin: 0; color: var(--grey); }
+  .kv dt, .kv dd { padding-top: 2.5mm; border-top: 1px solid var(--rule); }
+  .kv dt:first-of-type, .kv dd:first-of-type { border-top: 0; padding-top: 0; }
+
+  /* Tikki home screen callout */
+  .screen { display: inline-flex; align-items: center; gap: 4mm; margin-top: 5mm; padding: 4mm 5mm; border: 1px solid var(--rule); border-radius: 10px; }
+  .screen .lbl { font-size: 7.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--grey); margin-right: 2mm; }
+  .btn { display: inline-block; padding: 2.2mm 5mm; border-radius: 999px; font-size: 9pt; font-weight: 700; border: 1.5px solid var(--accent); color: var(--accent); }
+  .btn.fill { background: var(--accent); color: var(--white); }
+
+  .note { margin-top: 5mm; padding-left: 4mm; border-left: 3px solid var(--accent); font-size: 9.2pt; color: var(--grey); line-height: 1.5; max-width: 160mm; }
+  .note b { color: var(--black); }
+</style>
+</head>
+<body>
+
+<!-- Klippi mark: tilted green stamp card, eight stamps, last two still open -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="klippi-mark" viewBox="0 0 200 200">
+      <g transform="rotate(-5 100 100)">
+        <rect x="24" y="66" width="162" height="98" rx="16" fill="#22C55F" opacity=".45"/>
+        <rect x="16" y="50" width="164" height="100" rx="16" fill="#22C55F"/>
+        <circle cx="48" cy="82" r="11" fill="#FFFFFF"/>
+        <circle cx="82" cy="82" r="11" fill="#FFFFFF"/>
+        <circle cx="116" cy="82" r="11" fill="#FFFFFF"/>
+        <circle cx="150" cy="82" r="11" fill="#FFFFFF"/>
+        <circle cx="48" cy="120" r="11" fill="#FFFFFF"/>
+        <circle cx="82" cy="120" r="11" fill="#FFFFFF"/>
+        <circle cx="116" cy="120" r="8.5" fill="none" stroke="#FFFFFF" stroke-width="5"/>
+        <circle cx="150" cy="120" r="8.5" fill="none" stroke="#FFFFFF" stroke-width="5"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- =============================== PAGE 1 · COVER =============================== -->
+<section class="page cover">
+  <div class="top">
+    <div class="brand"><svg><use href="#klippi-mark"/></svg>Klippi</div>
+    <div class="r"><b>System breakdown</b>7 September 2026</div>
+  </div>
+
+  <div class="hero">
+    <svg class="mark" aria-hidden="true"><use href="#klippi-mark"/></svg>
+    <div class="bar"></div>
+    <div class="kicker">Platform and card flows</div>
+    <h1>How Klippi works</h1>
+    <p class="sub">A plain description of the Klippi loyalty platform: the three roles, the three card types, and the exact step-by-step flows for stamp cards, gift cards and store credit. Written so a person or an AI build agent can understand and build it.</p>
+  </div>
+
+  <div class="meta">
+    <div><div class="label">Document</div><div class="v">System breakdown<span>Version 1.0</span></div></div>
+    <div><div class="label">Product</div><div class="v">Klippi<span>klippi.is</span></div></div>
+    <div><div class="label">Date</div><div class="v">7 September 2026</div></div>
+    <div><div class="label">Author</div><div class="v">Daníel Spanó<span>spanoehf@gmail.com</span></div></div>
+  </div>
+</section>
+
+<!-- ============ PAGE 2 · OVERVIEW ============ -->
+<section class="page">
+  <div class="head">
+    <div class="brand small"><svg><use href="#klippi-mark"/></svg>Klippi</div>
+    <div class="r"><b>Overview</b> · What the platform is</div>
+  </div>
+
+  <p class="intro">Klippi is a loyalty platform for restaurants, cafés and other stores. Customers keep digital cards in Apple Wallet or Google Wallet, so they never lose their stamping progress. Every card a customer claims also gives the store the customer's name and phone number, which the store uses for SMS marketing.</p>
+
+  <div class="sec wide first">
+    <div>
+      <div class="no">Roles</div>
+      <h2>Three people touch the system</h2>
+      <div class="cols3">
+        <div class="col"><span class="who">Customer</span><b>Holds cards in the wallet</b><p>Claims a card by scanning a QR code and entering name and phone number. Shows the card's QR code at the counter to get stamps or pay with a balance.</p></div>
+        <div class="col"><span class="who">Cashier</span><b>Uses the Tikki app</b><p>The home screen has two buttons: <code>Scan</code> and <code>Create card</code>. Scan opens a card's profile to add stamps or deduct an amount. Create card issues a Gjafakort or Inneignarkort.</p></div>
+        <div class="col"><span class="who">Manager</span><b>Runs the Klippi backend</b><p>Designs the stamp card, creates the stand with the QR code for customers, sees every card ever created, and uses collected phone numbers for SMS marketing.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec wide">
+    <div>
+      <div class="no">Card types</div>
+      <h2>Three kinds of cards a store can create</h2>
+      <div class="cols3">
+        <div class="col"><span class="who">01</span><b>Stamp card</b><p>Stamps on purchases. A full card earns something free or a discount. Claimed from the stand at the counter.</p></div>
+        <div class="col"><span class="who">02</span><b>Gjafakort (gift card)</b><p>A prepaid amount. Delivered on screen, by email, or as a physical card with a reference code. Redeemed by deducting from the balance.</p></div>
+        <div class="col"><span class="who">03</span><b>Inneignarkort (store credit)</b><p>Credit issued when an item is returned, matching the printed inneignarnóta. Redeemed like a gift card.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>2 / 7</span></div>
+</section>
+
+<!-- ============ PAGE 3 · BUILDING BLOCKS ============ -->
+<section class="page">
+  <div class="head">
+    <div class="brand small"><svg><use href="#klippi-mark"/></svg>Klippi</div>
+    <div class="r"><b>Overview</b> · Building blocks</div>
+  </div>
+
+  <div class="sec wide first">
+    <div>
+      <div class="no">Building blocks</div>
+      <h2>What the platform is made of</h2>
+      <dl class="kv">
+        <dt>Klippi backend</dt><dd>Web app for the manager. Card design, stand and QR creation, list of all cards, customer database.</dd>
+        <dt>Tikki app</dt><dd>Cashier's phone app. Two actions: Scan a card, or Create a card.</dd>
+        <dt>Wallet cards</dt><dd>Apple Wallet and Google Wallet passes, each with its own QR code. They update automatically when stamps or balances change.</dd>
+        <dt>Receiving flow</dt><dd>The web page a customer lands on after scanning. Asks for name and phone number, then releases the card into the wallet.</dd>
+        <dt>Claim pages</dt><dd>A store subpage such as giftcard.mettasport.is, which Klippi sets up for each client, or klippi.is/giftcard. Used to claim a physical gift card with full name, phone number and reference code.</dd>
+        <dt>Customer database</dt><dd>Name and phone number (and email when used) saved on every claim. Used for SMS about new offers, drops and limited deals.</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="screen"><span class="lbl">Tikki home screen</span><span class="btn fill">Scan</span><span class="btn">Create card</span></div>
+
+
+  <div class="note"><b>Rule that applies to every card type:</b> a card is only released after the customer enters name and phone number. Claiming a card and giving the store a marketing contact are the same action.</div>
+
+  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>3 / 7</span></div>
+</section>
+
+<!-- ============ PAGE 4 · STAMP CARD ============ -->
+<section class="page">
+  <div class="head">
+    <div class="brand small"><svg><use href="#klippi-mark"/></svg>Klippi</div>
+    <div class="r"><b>Flow 01</b> · Stamp card</div>
+  </div>
+
+  <div class="sec wide first">
+    <div>
+      <div class="no">Flow 01</div>
+      <h2>Stamp card</h2>
+      <p class="desc">The core loyalty loop. The manager designs the card once, customers claim it from a stand at the counter, and the cashier adds stamps by scanning the card.</p>
+    </div>
+  </div>
+
+  <ol class="flow">
+    <li><span class="n">01</span><div><span class="who">Manager</span><b>Design the card and create the stand</b><p>In the Klippi backend the manager designs the stamp card, then creates a stand with a QR code that customers can scan at the counter.</p></div></li>
+    <li><span class="n">02</span><div><span class="who">Customer</span><b>Claim the card into the wallet</b><p>The customer scans the stand's QR code and enters the receiving flow: name and phone number. The card is then released into Apple Wallet or Google Wallet, and the phone number is saved to the store's database.</p></div></li>
+    <li><span class="n">03</span><div><span class="who">Cashier</span><b>Add a stamp on purchase</b><p>The cashier opens Tikki, taps <code>Scan</code> and scans the QR code on the customer's card. The card profile opens and the cashier adds stamps to that customer.</p></div></li>
+    <li><span class="n">04</span><div><span class="who">System</span><b>Card updates automatically</b><p>The card in the customer's wallet updates on its own with the new stamp count.</p></div></li>
+    <li><span class="n">05</span><div><span class="who">Customer</span><b>Earn the reward</b><p>When the card is full the customer gets something free or at a discount.</p></div></li>
+    <li><span class="n">06</span><div><span class="who">Manager</span><b>SMS marketing</b><p>The store uses the phone numbers collected through claims to send SMS about new offers, drops and limited deals.</p></div></li>
+  </ol>
+
+  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>4 / 7</span></div>
+</section>
+
+<!-- ============ PAGE 5 · GIFT CARD: CREATE AND DELIVER ============ -->
+<section class="page">
+  <div class="head">
+    <div class="brand small"><svg><use href="#klippi-mark"/></svg>Klippi</div>
+    <div class="r"><b>Flow 02</b> · Gjafakort</div>
+  </div>
+
+  <div class="sec wide first">
+    <div>
+      <div class="no">Flow 02</div>
+      <h2>Gjafakort (gift card)</h2>
+      <p class="desc">Payment happens on the store's own terminal. Klippi creates the card, delivers it in one of three ways, and later deducts purchases from its balance.</p>
+    </div>
+  </div>
+
+  <div class="label" style="display:block; padding-bottom:2mm; border-bottom:1px solid var(--rule-strong);">A · Create</div>
+  <ol class="flow">
+    <li><span class="n">01</span><div><span class="who">Customer · Cashier</span><b>Pay for the gift card</b><p>The customer asks for a gift card. The cashier asks for the amount, enters it into the payment terminal, and the customer pays.</p></div></li>
+    <li><span class="n">02</span><div><span class="who">Cashier</span><b>Create the card in Tikki</b><p><code>Create card</code> → <code>Gjafakort</code> → enter the amount → <code>Create</code>. A unique card is created and is always visible in the Klippi backend.</p></div></li>
+    <li><span class="n">03</span><div><span class="who">Cashier</span><b>Choose how to deliver it</b><p>The cashier asks whether to display the card now, send it by email, or produce a physical card. Three options, described below.</p></div></li>
+  </ol>
+
+  <div class="label" style="display:block; margin-top:5mm; padding-bottom:2mm; border-bottom:1px solid var(--rule-strong);">B · Deliver</div>
+  <div class="cols3">
+    <div class="col"><span class="who">Option 1</span><b>Display now</b><p>A QR code fills the cashier's screen. The customer scans it, enters name and phone number in the receiving flow, and the card lands in their wallet. The customer's details are saved.</p></div>
+    <div class="col"><span class="who">Option 2</span><b>Send via email</b><p>The cashier types the customer's email address in the app and sends the card.</p></div>
+    <div class="col"><span class="who">Option 3</span><b>Reference code (physical gift)</b><p>A 5-character code of letters and numbers appears. The cashier takes a pre-printed physical gift card from the cabinet, fills in the two blanks (amount and the 5-box code), and packs it in an envelope. Claim instructions are printed at the bottom of the card.</p></div>
+  </div>
+
+  <div class="note"><b>Claiming a physical card.</b> The recipient goes to the store's claim page, for example giftcard.mettasport.is, or to klippi.is/giftcard, and fills in three fields: full name, phone number, reference code. Every reference code is unique across all stores, so klippi.is/giftcard always resolves the right card. Claiming releases the card to the wallet and saves the recipient's details for marketing.</div>
+
+  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>5 / 7</span></div>
+</section>
+
+<!-- ============ PAGE 6 · GIFT CARD REDEEM + STORE CREDIT ============ -->
+<section class="page">
+  <div class="head">
+    <div class="brand small"><svg><use href="#klippi-mark"/></svg>Klippi</div>
+    <div class="r"><b>Flow 02 · 03</b> · Redeem and Inneignarkort</div>
+  </div>
+
+  <div class="sec wide first">
+    <div>
+      <div class="no">Flow 02 · continued</div>
+      <h2>Gjafakort: redeem</h2>
+      <p class="desc">Later visits. The gift card works like a balance that the cashier deducts from by scanning the card.</p>
+    </div>
+  </div>
+
+  <div class="label" style="display:block; margin-top:0; padding-bottom:2mm; border-bottom:1px solid var(--rule-strong);">C · Redeem</div>
+  <ol class="flow">
+    <li><span class="n">01</span><div><span class="who">Cashier</span><b>Total the purchase</b><p>Scan the items and note the total amount.</p></div></li>
+    <li><span class="n">02</span><div><span class="who">Cashier</span><b>Scan the gift card</b><p>Tikki → <code>Scan</code> → scan the QR code on the customer's gift card. The gift card profile appears.</p></div></li>
+    <li><span class="n">03</span><div><span class="who">Cashier · System</span><b>Deduct and confirm</b><p>Deduct the purchase amount from the balance and tap <code>Confirm</code>. The card in the wallet updates automatically.</p></div></li>
+  </ol>
+
+  <div class="sec wide">
+    <div>
+      <div class="no">Flow 03</div>
+      <h2>Inneignarkort (store credit)</h2>
+      <p class="desc">For stores with a store-credit policy on returns. The credit follows the printed inneignarnóta and is redeemed like a gift card.</p>
+    </div>
+  </div>
+
+  <ol class="flow">
+    <li><span class="n">01</span><div><span class="who">Customer · Cashier</span><b>Return the item</b><p>The customer returns an item. The cashier scans it, sees the amount it cost, and prints the inneignarnóta.</p></div></li>
+    <li><span class="n">02</span><div><span class="who">Cashier</span><b>Create the credit card</b><p>Tikki → <code>Create card</code> → <code>Inneignarkort</code> → enter the amount from the inneignarnóta.</p></div></li>
+    <li><span class="n">03</span><div><span class="who">Cashier</span><b>Deliver</b><p><code>Display now</code> (customer scans the QR code and claims it) or <code>Send via email</code>.</p></div></li>
+    <li><span class="n">04</span><div><span class="who">Cashier · System</span><b>Redeem on the next visit</b><p>Scan the Inneignarkort QR code, edit the balance in the card profile, confirm. The card updates automatically.</p></div></li>
+  </ol>
+
+  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>6 / 7</span></div>
+</section>
+
+<!-- ============ PAGE 7 · BUILD SUMMARY ============ -->
+<section class="page">
+  <div class="head">
+    <div class="brand small"><svg><use href="#klippi-mark"/></svg>Klippi</div>
+    <div class="r"><b>Build summary</b> · Screens, data and rules</div>
+  </div>
+
+  <div class="sec wide first">
+    <div>
+      <div class="no">Build summary</div>
+      <h2>What has to exist</h2>
+      <p class="desc">Everything above, condensed into the screens, data, lifecycle and rules an implementation needs to cover.</p>
+    </div>
+  </div>
+
+  <dl class="kv">
+    <dt>Tikki app screens</dt><dd>Home (Scan, Create card) · Scan → Card profile with add stamps, deduct amount, Confirm · Create card → Gjafakort or Inneignarkort → amount → Create → Display now, Send via email, Reference code (Gjafakort only).</dd>
+    <dt>Web screens</dt><dd>Manager backend (design card, create stand and QR, list of all cards, customers) · Receiving flow (name, phone → release card to wallet) · Claim page (full name, phone, reference code), per store or at klippi.is/giftcard.</dd>
+    <dt>Data</dt><dd>Store · Manager · Cashier · Card template (design) · Card (type: stamp, gift or credit; stamp count or balance; unique reference code; QR; status) · Customer (name, phone, email) · History of stamps and deductions.</dd>
+    <dt>Card lifecycle</dt><dd>Created → delivered (display now, email, or reference code) → claimed with name and phone → in the wallet → updated on each scan (stamp added or amount deducted) → full or empty.</dd>
+    <dt>Integrations</dt><dd>Apple Wallet and Google Wallet passes with automatic updates · QR code on every card · SMS sending · Email delivery. Payment stays on the store's terminal, outside Klippi.</dd>
+  </dl>
+
+  <div class="sec wide" style="padding-bottom:0;">
+    <div>
+      <div class="no">Rules</div>
+      <h2>Things that are always true</h2>
+      <ul class="inc">
+        <li>A card is released only after name and phone number are entered</li>
+        <li>Every card has its own unique reference code, across all stores</li>
+        <li>Reference codes are 5 characters, letters and numbers</li>
+        <li>Wallet cards update automatically after every change</li>
+        <li>Every created card is visible in the Klippi backend</li>
+        <li>Reference code delivery exists for Gjafakort only</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot"><span><b>Klippi</b> · System breakdown</span><span>7 / 7</span></div>
+</section>
+
+</body>
+</html>

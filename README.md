@@ -9,6 +9,12 @@ Landing-page style PDF offers, authored as a single HTML file per offer and rend
 | Whale Watching Hauganes (whales.is) | `offers/whales-hauganes/index.html` | `offers/whales-hauganes/Whales-Hauganes-Tilbod.pdf` |
 | Vélasalan (velasalan.is) | `offers/velasalan/index.html` | `offers/velasalan/Velasalan-Tilbod.pdf` |
 
+## Documents
+
+| Document | Source | Output |
+| --- | --- | --- |
+| Klippi system breakdown | `docs/klippi/index.html` | `docs/klippi/Klippi-System-Breakdown.pdf` |
+
 ## Editing
 
 Open the offer's `index.html` in a browser to preview (each `.page` section is one A4 page). Edit copy and prices directly in the HTML. Brand colors live in the `:root` block at the top of the file; layout and typography are shared in `assets/offer.css`.
